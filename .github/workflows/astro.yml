@@ -33,8 +33,14 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Website
         uses: actions/checkout@v4
+      - name: Checkout Writeups
+        uses: actions/checkout@v4
+        with:
+          repository: 'Hal0g3n/CTF-Notes' # Replace with the target repository path
+          path: './src/pages/CTF-Writeups' # Optional: Specify a path to clone into
+          token: ${{ secrets.CTF_NOTES_PAT }} # Required for private repositories
       - name: Detect package manager
         id: detect-package-manager
         run: |
